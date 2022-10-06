@@ -18,7 +18,8 @@ Route::get('/',[ProductController::class,'index']);
 Route::get('/product/{product}',[ProductController::class,'product'])->name('product');
 
 Route::get('/product/{product}/edit',[ProductController::class,'edit'])->name('edit');
-Route::post('/{product}/edit/save',[ProductController::class,'editSave'])->name('edit.save');
+Route::post('/product/{product}/edit/save',[ProductController::class,'editSave'])->name('edit.save');
+Route::get('/product/{product}/delete',[ProductController::class,'delete'])->name('delete');
 
 Route::get('/create',[ProductController::class,'create'])->name('create');
 Route::post('/store',[ProductController::class,'store'])->name('store');

@@ -29,8 +29,8 @@
     <img src="/storage/{{$product->image}}" alt="image" style="max-width: 400px" >
     <p>цена:{{$product->price}}</p>
      <p>количество:{{$product->quantity}}</p>
-
-        <a href="{{url('delete',['product'=>$product->id])}}">Удалить</a>
+        <p>Категория: {{$product->category->title}}</p>
+        <a href="{{route('delete',['product'=>$product->id])}}">Удалить</a>
         <a href="{{route('edit',['product'=>$product->id])}}"> Редактировать </a> <br>
         <a href="/" style="color: darkblue">Назад</a>
 </div>

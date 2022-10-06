@@ -39,6 +39,7 @@
                                         <a class="nav-link" href="{{route('create')}}">Добавить товар</a>
                                     </li>
 
+
                                 </ul>
                             </div>
                         </div>

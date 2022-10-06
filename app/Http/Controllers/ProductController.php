@@ -58,7 +58,7 @@ class ProductController extends Controller
             $product->quantity = $request->get('quantity');
             $product->price = $request->get('price');
             $product->category_id = $request->get('category_id');
-            $url = $request->file('image')->editSave('images');
+            $url = $request->file('image')->store('images');
             $product->image = $url;
 
             $product->save();
