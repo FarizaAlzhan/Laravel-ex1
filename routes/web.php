@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[ProductController::class,'index']);
+Route::group(['prefix' =>'auth'],function(){
+    Route::get('register',[AuthController::class,'register'])->name('register');
+    Route::get('login',[AuthController::class,'auth'])->name('auth');
+    Route::post('user/create',[AuthController::class,'create'])->name('user.create');
+    Route::post('signin',[AuthController::class,'login'])->name('login');
+});
+
+Route::get('/',[ProductController::class,'index'])->name('products');
 Route::get('/product/{product}',[ProductController::class,'product'])->name('product');
 
 Route::get('/product/{product}/edit',[ProductController::class,'edit'])->name('edit');

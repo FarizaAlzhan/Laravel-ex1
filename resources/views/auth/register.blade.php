@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,73 +7,58 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body background ="https://static-cse.canva.com/blob/194831/Green-Financial-Services-Corporate-Zoom-Background.png">
-
+@if(session('status'))
+    {{session('status')}}
+@endif
 <div class="container mt-5">
     <div class="row">
         <div class="col-6">
 
-            <form action="{{route('edit.save',['product'=>$product->id])}}" method="post" enctype="multipart/form-data" style="display: flex;flex-direction: column">
-            @csrf
+            <form action="{{route('user.create')}}" method="post">
+                @csrf
                 <div class="row mt-3">
                     <div class="col-12">
-                        <label>Название товара : </label>
+                        <label>Имя : </label>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
-                        <input type="text" placeholder="введите название сумки" name="title" value="{{$product->title}}">
+                        <input type="text" name="name" class="form-control" placeholder="Введите имя: " required="required">
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
-                        <label>Количество : </label>
+                        <label>Почта : </label>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
-                        <input type="number" placeholder="введите количество" name="quantity" value="{{$product->quantity}}">
+                        <input type="email" name="email" class="form-control" placeholder="Введите почту: " required="required">
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
-                        <label>Цена : </label>
+                        <label>Пароль : </label>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
-                        <input type="number" placeholder="введите цену сумки" name="price" value="{{$product->price}}">
+                        <input type="password" name="password" class="form-control" placeholder="Введите пароль: " required="required">
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
-                        <label>Категория : </label>
+                        <label>Потвердите пароль : </label>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
-
-                        <select  name="category_id">
-                            <option  value="{{$product->category_id}}"></option>
-                            @foreach($categories as $category)
-                                <option  value="{{$category->id}}">{{$category->title}}</option>
-                            @endforeach
-                        </select>
+                        <input type="password" name="confirm_password" class="form-control" placeholder="Потвердите пароль: " required="required">
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
-                        <label>Фотография товара : </label>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-12">
-                        <input type="file" placeholder="выберите фото сумки" name="image">
-                    </div>
-                </div>
-
-                <div class="row mt-3">
-                    <div class="col-12">
-                        <button style="border-color: black;" class="btn btn-light">Сохранить</button>
+                        <button style="border-color: black;" class="btn btn-light">Зарегистрироваться</button>
                     </div>
                 </div>
             </form>
@@ -85,6 +68,3 @@
 </div>
 </body>
 </html>
-
-
-
