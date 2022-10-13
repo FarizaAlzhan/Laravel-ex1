@@ -43,7 +43,12 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('register')}}">Регистрация</a>
+                                        @if (\Illuminate\Support\Facades\Auth::user())
+                                            {{\Illuminate\Support\Facades\Auth::user()->name}}
+                                        @else
+                                            <a class="nav-link" href="{{route('register')}}">Регистрация</a>
+
+                                        @endif
                                     </li>
                                 </ul>
                             </div>
@@ -67,12 +72,14 @@
     @if(session('status'))
         {{session('status')}}
     @endif
-<div class="row">
-    <div class="row mt-3">
+
+<div class="row ">
+    <div class="row mt-4 ">
+
         <div class = "cards">
-        @foreach($products as $product)
 
         <div class="card-group">
+            @foreach($products as $product)
             <div class="card">
                 <img class="card-img-top" src="storage/{{$product->image}}" alt="image" style="max-width: 300px">
                 <div class="card-body">
@@ -80,14 +87,12 @@
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
-        @endforeach
-
+            @endforeach
         </div>
 
         </div>
     </div>
 </div>
-
 </div>
 
 </body>

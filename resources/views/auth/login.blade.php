@@ -13,7 +13,7 @@
             @if(session('status'))
                 {{session('status')}}
             @endif
-            <form action="{{route('signIn')}}" method="post">
+            <form action="{{route('login')}}" method="post">
                 @csrf
                 <div class="row mt-3">
                     <div class="col-12">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
-                        <input type="text" name="name" class="form-control" placeholder="введите имя: " required="required">
+                        <input type="text" name="email" class="form-control" placeholder="введите имя: " required="required">
                     </div>
                 </div>
                 <div class="row mt-3">

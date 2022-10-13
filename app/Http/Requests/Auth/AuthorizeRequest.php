@@ -25,9 +25,7 @@ class AuthorizeRequest extends FormRequest
     {
         return [
             'email' => ['required'],
-            'name' => ['required'],
             'password' => ['required'],
-            'confirm_password' => ['required']
         ];
     }
 }

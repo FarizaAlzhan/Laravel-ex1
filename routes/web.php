@@ -19,7 +19,7 @@ Route::group(['prefix' =>'auth'],function(){
     Route::get('register',[AuthController::class,'register'])->name('register');
     Route::get('login',[AuthController::class,'auth'])->name('auth');
     Route::post('user/create',[AuthController::class,'create'])->name('user.create');
-    Route::post('signin',[AuthController::class,'login'])->name('login');
+    Route::post('signIn',[AuthController::class,'login'])->name('login');
 });
 
 Route::get('/',[ProductController::class,'index'])->name('products');
