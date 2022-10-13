@@ -43,7 +43,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
-                        <input type="number" placeholder="введите цену сумки" name="price" value="{{$product->price}}">
+                        <input type="number" placeholder="введите стоимость сумки" name="price" value="{{$product->price}}">
                     </div>
                 </div>
                 <div class="row mt-3">
