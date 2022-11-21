@@ -27,3 +27,7 @@ Route::delete('/product/{product}/delete',[\App\Http\Controllers\API\ProductCont
 Route::post('/store',[\App\Http\Controllers\API\ProductController::class,'store']);
 
 Route::put('/product/{product}/edit',[\App\Http\Controllers\API\ProductController::class,'edit']);
+
+Route::post('/registration',[\App\Http\Controllers\API\AuthApiController::class,'registration']);
+
+Route::post('/Login',[\App\Http\Controllers\API\AuthApiController::class,'Login']);
