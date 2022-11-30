@@ -19,15 +19,23 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::get('/products',[\App\Http\Controllers\API\ProductController::class,'index']);
+Route::get('/products',[\App\Http\Controllers\API\ProductController::class,'index'])
+    ->middleware('auth:api');;
 
-Route::delete('/product/{product}/delete',[\App\Http\Controllers\API\ProductController::class,'del']);
+Route::delete('/product/{product}/delete',[\App\Http\Controllers\API\ProductController::class,'del'])
+    ->middleware('auth:api' , 'admin');;
 
 
-Route::post('/store',[\App\Http\Controllers\API\ProductController::class,'store']);
+Route::post('/store',[\App\Http\Controllers\API\ProductController::class,'store'])
+    ->middleware('auth:api' , 'admin');
 
-Route::put('/product/{product}/edit',[\App\Http\Controllers\API\ProductController::class,'edit']);
+Route::put('/product/{product}/edit',[\App\Http\Controllers\API\ProductController::class,'edit'])
+    ->middleware('auth:api' , 'admin');;
 
-Route::post('/registration',[\App\Http\Controllers\API\AuthApiController::class,'registration']);
+Route::group(['prefix' => 'user'],function (){
+    Route::post('/registration',[\App\Http\Controllers\API\AuthApiController::class,'registration']);
+    Route::post('/Login',[\App\Http\Controllers\API\AuthApiController::class,'Login']);
+});
 
-Route::post('/Login',[\App\Http\Controllers\API\AuthApiController::class,'Login']);
+
+

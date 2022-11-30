@@ -14,7 +14,15 @@ class AuthApiController extends Controller
 {
 
     public function registration(Request $request){
-        $user = User::create([
+        $user = User::where('email', $request->email)->first();
+
+        if($user) {
+            return response()->json([
+                'success' =>false,
+                'message' => 'Email already exists'
+            ]);
+        }
+         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
@@ -22,7 +30,7 @@ class AuthApiController extends Controller
         ]);
         return response()->json([
             'success' => true,
-            'token' => $user->createToken($user->email)->accessToken
+            'message' => 'Created'
         ]);
     }
 
